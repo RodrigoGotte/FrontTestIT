@@ -1,10 +1,11 @@
 <header>
     <ul>
       
-      <li class="logo"><a href="#" [routerLinkActive]="['actived']">Commerce logo</a></li>
-      <li><a [routerLink]="['/Carrito']" [routerLinkActive]="['actived']">Carrito</a></li>
-      <li><a [routerLink]="['/login']" [routerLinkActive]="['actived']">Iniciar Sesion</a></li>
-      <li><a [routerLink]="['/logout']" [routerLinkActive]="['actived']">Cerrar Sesion</a></li>
+     
+      <li id="logout"><a  name="logout"  [routerLink]="['/logout']" [routerLinkActive]="['actived']" *ngIf="login" >Cerrar Sesion</a></li>
+      <li class="logo"><a href="#" [routerLinkActive]="['actived']">logo</a></li>
+      <li id="login"><a  [routerLink]="['/login']" [routerLinkActive]="['actived']">Iniciar Sesion</a></li>
+      <li><a [routerLink]="['/Carrito']" [routerLinkActive]="['actived']" *ngIf="login" >Carrito</a></li>
       
     </ul>
     </header>
