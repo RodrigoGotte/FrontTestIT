@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sesion-usu.component.css']
 })
 export class SesionUsuComponent implements OnInit {
+  
 
   constructor() { }
 
   ngOnInit(): void {
+     var login=true
   }
 
 }
