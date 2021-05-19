@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { Component, OnInit, Input, DoCheck, Output, EventEmitter } from '@angular/core';
 import { ProductoComponent } from '../producto/producto.component';
 import { DataService } from '../services/data.service';
 import { Producto } from '../services/producto.model';
@@ -15,6 +15,8 @@ export class CarritoComponent implements OnInit,DoCheck {
 
  @Input()
  carrohijo:Producto[]=[]
+
+ 
  
  @Input()
  subtotal:number=0
@@ -26,6 +28,7 @@ export class CarritoComponent implements OnInit,DoCheck {
 sesion:boolean=false;
 acu4:number=0;
 acu10:number=0;
+
   
   
 constructor(
@@ -79,7 +82,7 @@ constructor(
       this.compra(this.usuario.idusuario,this.subtotal)
     }
   }
-  compra(usuario:number, tot:number)
+  compra( usuario:number, tot:number)
   {
     this._dataService.compra(usuario,tot).subscribe
     (response=>{
@@ -87,6 +90,8 @@ constructor(
       alert("Tu compra se a hecho correctamerte")
       this.carrohijo =[];
       this.subtotal=0
+      
+
     },error =>{
       console.error(<any>error)
     });

@@ -8,7 +8,6 @@ import { logging } from 'selenium-webdriver';
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
-  styleUrls: ['./producto.component.css'],
   providers:[DataService]
 })
 export class ProductoComponent implements OnInit {
@@ -19,7 +18,10 @@ export class ProductoComponent implements OnInit {
   public usuario!: Usuario;
   public nombre: string=""
   public contrasena: string=""
+  
+  @Input()
   public prods: Producto[] | undefined ;
+  
   public carro:Producto[]=[]
   public url:string;
   public subtotal: number=0;
@@ -54,9 +56,7 @@ export class ProductoComponent implements OnInit {
     response => {
           this.carro.push(response);    
           this.subtotal=this.subtotal+precio
-          sessionStorage.setItem('carro',JSON.stringify(this.carro))
-          sessionStorage.setItem('subtotal',JSON.stringify(this.subtotal))
-
+       
     },
     error =>{
           console.log(<any>error);

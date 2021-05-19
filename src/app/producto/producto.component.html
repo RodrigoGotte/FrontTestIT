@@ -1,7 +1,8 @@
-<div class="login">
-	<form class="custom-form" method="post">
-	  <h1>Login</h1>
+<div *ngIf=!sesion class="login" style="text-align: center;" >
+	<form class="custom-form" method="post" >
+	  <h5 style="text-align: center; margin-left: 10px;">Login</h5>
 	  <input
+	  style="width: 100px; height:25px; font-size: small; margin-left: 10px;"
 		type="text"
 		[(ngModel)]="nombre"
 		name="nombre"
@@ -9,32 +10,34 @@
 		required="required"
 	  /><br>
 	  <input
+	  style="width: 100px; height:25px; font-size: small;  margin-left: 10px;"
 		type="password"
 		[(ngModel)]="contrasena"
 		name="contraseña"
 		placeholder="Contraseña"
 		required="required"
 	  /><br>
-	  <button type="submit" (click)="onLogin(nombre,contrasena)">Iniciar sesion</button>
+	  <button type="submit"  (click)="onLogin(nombre,contrasena)"style="width:100px; height:25px; font-size:small; margin-top 10px;  margin-left: 10px;" >Iniciar sesion</button>
 	</form>
   </div>
 
+ <div class="login" *ngIf=sesion>
+	<h2 style="text-align: center;">Bienvenido {{usuario.nombre}}</h2>  
+ </div>
+
+  <hr>
+
 <div class="container">	
 	<ul>
-		<li *ngFor="let prod of prods" class="project">
+		<li *ngFor="let prod of prods" class="producto" (click)="agregarCarrito(prod.idproducto,prod.precio)" style="cursor: pointer;">
 			<div class="image">
-				<h1>{{prod.idproducto}}</h1>
-				<a (click)="agregarCarrito(prod.idproducto,prod.precio)"><img src="{{prod.img}}" /></a>
+				<h1>{{prod.nombre}}</h1>
+				<a ><img src="{{prod.img}}" /></a>
 				</div>
-				<h3>{{prod.nombre}}</h3>
+				<h3>{{prod.descripcion}}</h3>
 				<p>{{prod.precio}}</p>
-			
 		</li>
 	</ul>
 </div>
-
-<div *ngIf=sesion>
-	<hr>
-	<h1>Carro</h1>
-	<app-carrito [carrohijo]=carro [subtotal]=subtotal [usuario]=usuario [sesion]=sesion></app-carrito>
-</div>
+<br>
+<app-carrito [carrohijo]=carro [subtotal]=subtotal [usuario]=usuario [sesion]=sesion></app-carrito>
