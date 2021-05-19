@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { ProductoComponent } from '../producto/producto.component';
 import { DataService } from '../services/data.service';
 import { Producto } from '../services/producto.model';
@@ -10,65 +10,73 @@ import { Usuario } from '../services/usuario.model';
   styleUrls: ['./carrito.component.css'],
   providers:[DataService]
 })
-export class CarritoComponent implements OnInit {
-  public wacho:string|null=""
 
-  constructor(
-    
-   /* public father:ProductoComponent,
-    private _dataService:DataService,
-    private  document: Document,
-    */
+export class CarritoComponent implements OnInit,DoCheck {
+
+ @Input()
+ carrohijo:Producto[]=[]
  
+ @Input()
+ subtotal:number=0
+
+ @Input()
+  usuario!: Usuario;
+
+@Input()
+sesion:boolean=false;
+acu4:number=0;
+acu10:number=0;
+  
+  
+constructor(
+    private _dataService:DataService,  
     ) 
   { 
     
   }
-
-  ngOnInit(): void {
-    console.log(sessionStorage.getItem('usuario'))
-    var carro = (sessionStorage.getItem('carro'))
-    //var subtotal = parseInt(sessionStorage.getItem('subtotal')),10)
-    console.log("objeto obtenido="+ JSON.parse('carro'))
-    //this.totalcom(subtotal,this.father.carro,this.father.usuario);
-
-   
-    
-   
-  }/*
- totalcom(sub:number,carro:Producto[], usuario:Usuario)
-  {
-    if (usuario==null){
-      return console.error("No hay usuario"); 
-    }else{
-    sub=sub;
-    if (carro.length >= 4){
-      sub=(sub*0.25)-sub;
-    }
-    if (carro.length >= 10)
+    ngOnInit(): void 
     {
-      if (usuario.tipocarrito == 2)
-      { 
-        sub=sub-100;
-      }
-      if (usuario.tipocarrito == 1)
-      { 
-        sub=sub-500;
-      }
-     if (usuario.tipocarrito == 3)
-      { 
-        sub=sub-300;
-      }
-    return sub;
+     
     }
-  }   
+  
+  ngDoCheck()
+  {  
+    
+    if(this.carrohijo.length == 4 || this.carrohijo.length ==10)
+    {
+      if(this.carrohijo.length == 4 && this.acu4 == 0)
+      {
+        this.subtotal=this.subtotal-(this.subtotal*0.25)
+        this.acu4=1;
+      }
+      if (this.carrohijo.length >= 10 && this.acu10==0)
+      {        
+        if (this.usuario.tipocarrito == 1)
+        { 
+          this.subtotal=this.subtotal-500;
+          this.acu10=1;
+        }
+        if (this.usuario.tipocarrito == 2)
+        { 
+          this.subtotal=this.subtotal-100;
+          this.acu10=1;
+        }
+        if (this.usuario.tipocarrito == 3)
+        { 
+          this.subtotal=this.subtotal-300;
+          this.acu10=1;
+        }
+      }    
+   }
   }
+  
+  
   botoncompra()
   {
-    if (this.father.usuario==null){
+    if (this.usuario==null){
       return console.error("No hay usuario"); 
     }else{
-      this.compra(this.father.usuario.idusuario,this.father.subtotal)
+      this.compra(this.usuario.idusuario,this.subtotal)
     }
   }
   compra(usuario:number, tot:number)
@@ -77,10 +85,12 @@ export class CarritoComponent implements OnInit {
     (response=>{
       console.log("tu compra se a hecho correctamerte")
       alert("Tu compra se a hecho correctamerte")
-      this.document.location.href = 'localhost:4200/';
+      this.carrohijo =[];
+      this.subtotal=0
     },error =>{
       console.error(<any>error)
     });
     
-  }*/
+  }
+
 }

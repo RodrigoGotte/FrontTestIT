@@ -34,7 +34,7 @@ export class DataService{
     compra(id:number, venta:number):Observable<any>
     {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.get(this.url+"compra/"+id+"/"+venta, {headers: headers});
+        return this._http.put(this.url+"compra/"+id+"/"+venta, {headers: headers});
     }
 
 }

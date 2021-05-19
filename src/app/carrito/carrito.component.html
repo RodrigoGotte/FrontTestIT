@@ -1,0 +1,15 @@
+<div class="container">	
+	<ul>
+		<li *ngFor="let prod of carrohijo" class="project">
+			<div class="image">
+				<h1>{{prod.idproducto}}</h1>
+				<a><img src="{{prod.img}}" /></a>
+				</div>
+				<h3>{{prod.nombre}}</h3>
+				<p>{{prod.precio}}</p>
+			
+		</li>
+	</ul>
+	<h2>Subtotal ={{subtotal}}</h2>
+	<button (click)="botoncompra()">compre compre</button>
+</div>
