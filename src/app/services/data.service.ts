@@ -31,6 +31,10 @@ export class DataService{
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.get(this.url+"usu/"+nombre+"/"+contraseña, {headers: headers});
     }
-    
+    compra(id:number, venta:number):Observable<any>
+    {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.get(this.url+"compra/"+id+"/"+venta, {headers: headers});
+    }
 
 }

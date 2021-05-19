@@ -5,7 +5,7 @@ export class Usuario{
       public nombre: string,
       public contraseña:string,
       public tipocarrito:number, 
-      public Ultimacompra:Date,
+      public Ultimacompra:string,
       public acucompras:number 
       ) {}
   }

@@ -1,4 +1,25 @@
 
+<div class="login">
+	<form class="custom-form" method="post">
+	  <h1>Login</h1>
+	  <input
+		type="text"
+		[(ngModel)]="nombre"
+		name="nombre"
+		placeholder="Nombre"
+		required="required"
+	  /><br>
+	  <input
+		type="password"
+		[(ngModel)]="contrasena"
+		name="contraseña"
+		placeholder="Contraseña"
+		required="required"
+	  /><br>
+	  <button type="submit" (click)="onLogin(nombre,contrasena)">Iniciar sesion</button>
+	</form>
+  </div>
+  
 <div class="container">	
 	<ul>
 		<li *ngFor="let prod of prods" class="project">
@@ -12,11 +33,3 @@
 		</li>
 	</ul>
 </div>
-
-<form #loginForm="ngForm" (ngSubmit)="onLogin()">
-	<label>Usuario</label><br>
-	<input type="text" name="name"  required /><br>
-	<label>Contraseña</label><br>
-	<input type="password" name="contraseña"  required /><br>
-	<input type="submit" value="Iniciar Sesion" [disabled]="!loginForm.form.valid" />
-</form>

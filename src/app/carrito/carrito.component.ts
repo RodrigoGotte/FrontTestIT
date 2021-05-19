@@ -11,25 +11,32 @@ import { Usuario } from '../services/usuario.model';
   providers:[DataService]
 })
 export class CarritoComponent implements OnInit {
+  public wacho:string|null=""
 
   constructor(
-    public father:ProductoComponent,
     
-
-  ) 
+   /* public father:ProductoComponent,
+    private _dataService:DataService,
+    private  document: Document,
+    */
+ 
+    ) 
   { 
     
   }
 
   ngOnInit(): void {
+    console.log(sessionStorage.getItem('usuario'))
+    var carro = (sessionStorage.getItem('carro'))
+    //var subtotal = parseInt(sessionStorage.getItem('subtotal')),10)
+    console.log("objeto obtenido="+ JSON.parse('carro'))
+    //this.totalcom(subtotal,this.father.carro,this.father.usuario);
+
+   
     
-    this.totalcom(this.father.subtotal,this.father.carro,this.father.usuario);
-
-    console.log(this.father.subtotal)
-    var total=this.father.subtotal
-
-  }
-  totalcom(sub:number,carro:Producto[], usuario:Usuario)
+   
+  }/*
+ totalcom(sub:number,carro:Producto[], usuario:Usuario)
   {
     if (usuario==null){
       return console.error("No hay usuario"); 
@@ -54,7 +61,26 @@ export class CarritoComponent implements OnInit {
       }
     return sub;
     }
+  }   
   }
-      
+  botoncompra()
+  {
+    if (this.father.usuario==null){
+      return console.error("No hay usuario"); 
+    }else{
+      this.compra(this.father.usuario.idusuario,this.father.subtotal)
+    }
   }
+  compra(usuario:number, tot:number)
+  {
+    this._dataService.compra(usuario,tot).subscribe
+    (response=>{
+      console.log("tu compra se a hecho correctamerte")
+      alert("Tu compra se a hecho correctamerte")
+      this.document.location.href = 'localhost:4200/';
+    },error =>{
+      console.error(<any>error)
+    });
+    
+  }*/
 }

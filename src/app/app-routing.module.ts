@@ -9,7 +9,6 @@ const routes: Routes = [
 	{path:'',component:ProductoComponent},
 	{path:'productos',component:ProductoComponent},
 	{path:'carrito',component:CarritoComponent}
-
 ];
 
 export const appRoutingProviders:any[]=[];
