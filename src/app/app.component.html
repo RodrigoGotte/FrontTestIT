@@ -1,19 +1,14 @@
-<header>
+<header> 
     <ul>
-      
-     
-      <li class="logout" ><a  name="logout"  [routerLink]="['/logout']" [routerLinkActive]="['actived']"   >Cerrar Sesion</a></li>
-      <li class="logo"><a href="#" [routerLinkActive]="['actived']">logo</a></li>
-      <li id="login" ><a  [routerLink]="['/login']" [routerLinkActive]="['actived']"  >Iniciar Sesion</a></li>
-      <li class=logout ><a  [routerLink]="['/Carrito']" [routerLinkActive]="['actived']"  >Carrito</a></li>
-      
-    </ul>
-    </header>
-    
-    <section  id="content">
+        <li  id="PROD"><a href="/productos" [routerLinkActive]="['actived']"><img class="logo" src="https://i.imgur.com/ZF9vfbJ.png " ></a></li>
+        <li  id="CARRO"><a href="/carrito" [routerLinkActive]="['actived']"><img class="logo"  src="https://i.imgur.com/dGdI5dT.png" ></a></li>
+    </ul>    
+</header>  
+
+<section id="content">
     <router-outlet></router-outlet>
-    </section>
-    
-    <footer>
-        E-Commerce FactorIT
-    </footer>
+</section>
+
+<footer>
+    Pagina creada Por Rodrigo Gotte
+</footer>

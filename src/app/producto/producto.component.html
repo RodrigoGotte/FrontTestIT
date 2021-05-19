@@ -1,8 +1,22 @@
-<h1>Productos en venta</h1>
-<div>
-    <img src={{img}}>
-    <h2>{{Nombre}}</h2>
-    <h3>{{descripcion}}</h3>
-    <h2>{{precio}}</h2>    
 
-</div> 
+<div class="container">	
+	<ul>
+		<li *ngFor="let prod of prods" class="project">
+			<div class="image">
+				<h1>{{prod.idproducto}}</h1>
+				<a (click)="agregarCarrito(prod.idproducto,prod.precio)"><img src="{{prod.img}}" /></a>
+				</div>
+				<h3>{{prod.nombre}}</h3>
+				<p>{{prod.precio}}</p>
+			
+		</li>
+	</ul>
+</div>
+
+<form #loginForm="ngForm" (ngSubmit)="onLogin()">
+	<label>Usuario</label><br>
+	<input type="text" name="name"  required /><br>
+	<label>Contraseña</label><br>
+	<input type="password" name="contraseña"  required /><br>
+	<input type="submit" value="Iniciar Sesion" [disabled]="!loginForm.form.valid" />
+</form>

@@ -9,14 +9,12 @@ import { routing , appRoutingProviders } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { ProductoComponent } from './producto/producto.component';
-import { SesionUsuComponent } from './sesion-usu/sesion-usu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarritoComponent,
-    ProductoComponent,
-    SesionUsuComponent
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +22,7 @@ import { SesionUsuComponent } from './sesion-usu/sesion-usu.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [appRoutingProviders],
+  providers: [ appRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
